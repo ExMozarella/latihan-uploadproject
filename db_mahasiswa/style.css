@@ -1,0 +1,602 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #f0e68c 0%, #fafad2 50%, #fff8dc 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4b0082;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(75, 0, 130, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: backgroundMove 20s linear infinite;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(75, 0, 130, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes backgroundMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+h2 {
+    text-align: center;
+    color: #4b0082;
+    font-size: 3em;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    animation: fadeInDown 0.6s ease-out;
+    background: linear-gradient(135deg, #4b0082, #8a2be2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h3 {
+    color: #4b0082;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+    font-weight: 600;
+    border-left: 4px solid #4b0082;
+    padding-left: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(75, 0, 130, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    animation: fadeInUp 0.6s ease-out;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #4b0082, #6a0dad, #8a2be2, #9370db, #8a2be2, #6a0dad, #4b0082);
+    background-size: 200% 100%;
+    border-radius: 24px 24px 0 0;
+    animation: gradientSlide 4s linear infinite;
+}
+
+@keyframes gradientSlide {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Styling untuk Tabel (index.php) */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: tableSlideIn 0.7s ease-out;
+}
+
+@keyframes tableSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+th, td {
+    border: none;
+    padding: 20px 24px;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #4b0082 0%, #6a0dad 100%);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1.2px;
+    position: relative;
+    overflow: hidden;
+}
+
+th::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+}
+
+th:hover::after {
+    left: 100%;
+}
+
+tbody tr {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: rowFadeIn 0.5s ease-out backwards;
+    border-bottom: 1px solid rgba(75, 0, 130, 0.05);
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.1s; }
+tbody tr:nth-child(2) { animation-delay: 0.15s; }
+tbody tr:nth-child(3) { animation-delay: 0.2s; }
+tbody tr:nth-child(4) { animation-delay: 0.25s; }
+tbody tr:nth-child(5) { animation-delay: 0.3s; }
+tbody tr:nth-child(n+6) { animation-delay: 0.35s; }
+
+@keyframes rowFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+tbody tr:hover {
+    background: linear-gradient(90deg, rgba(138, 43, 226, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+    transform: translateX(8px) scale(1.01);
+    box-shadow: -8px 0 20px rgba(75, 0, 130, 0.15);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+.action-links {
+    display: flex;
+    gap: 10px;
+}
+
+.action-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-links a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.action-links a:hover::before {
+    width: 350px;
+    height: 350px;
+}
+
+.action-links a:first-child {
+    background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+.action-links a:first-child:hover {
+    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.action-links a:last-child {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+
+.action-links a:last-child:hover {
+    box-shadow: 0 8px 25px rgba(244, 67, 54, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.add-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 1.1em;
+    color: white;
+    background: linear-gradient(135deg, #4b0082 0%, #6a0dad 50%, #8a2be2 100%);
+    background-size: 200% 100%;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 8px 25px rgba(75, 0, 130, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+}
+
+.add-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s;
+}
+
+.add-link:hover::before {
+    left: 100%;
+}
+
+.add-link:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(75, 0, 130, 0.6);
+    background-position: 100% 0;
+}
+
+.add-link:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Styling untuk Form (tambah.php & edit.php) */
+.form-container {
+    border: none;
+    padding: 50px;
+    width: 90%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    margin: 20px auto;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(75, 0, 130, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    animation: fadeInUp 0.6s ease-out;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #4b0082, #6a0dad, #8a2be2, #9370db, #8a2be2, #6a0dad, #4b0082);
+    background-size: 200% 100%;
+    border-radius: 24px 24px 0 0;
+    animation: gradientSlide 4s linear infinite;
+}
+
+.form-group {
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    animation: formGroupSlide 0.5s ease-out backwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.15s; }
+.form-group:nth-child(3) { animation-delay: 0.2s; }
+.form-group:nth-child(4) { animation-delay: 0.25s; }
+.form-group:nth-child(5) { animation-delay: 0.3s; }
+
+@keyframes formGroupSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.form-group label {
+    width: 100%;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #4b0082;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    font-size: 1em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(250, 250, 250, 0.8);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6a0dad;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(106, 13, 173, 0.15),
+                0 8px 16px rgba(75, 0, 130, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-group input:hover:not(:focus) {
+    border-color: #d0d0d0;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.form-submit input[type="submit"] {
+    background: linear-gradient(135deg, #4b0082 0%, #6a0dad 50%, #8a2be2 100%);
+    background-size: 200% 100%;
+    color: white;
+    border: none;
+    padding: 16px 55px;
+    border-radius: 50px;
+    font-size: 1.15em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(75, 0, 130, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-submit input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.form-submit input[type="submit"]:hover::before {
+    width: 450px;
+    height: 450px;
+}
+
+.form-submit input[type="submit"]:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(75, 0, 130, 0.6);
+    background-position: 100% 0;
+}
+
+.form-submit input[type="submit"]:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 35px;
+    font-size: 1em;
+    color: #4b0082;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 14px 35px;
+    border: 2px solid #4b0082;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.back-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4b0082, #6a0dad);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.back-link:hover::before {
+    left: 0;
+}
+
+.back-link:hover {
+    color: white;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(75, 0, 130, 0.4);
+    border-color: transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 25px;
+        border-radius: 20px;
+    }
+    
+    .form-container {
+        width: 95%;
+        padding: 30px;
+        border-radius: 20px;
+    }
+    
+    h2 {
+        font-size: 2.4em;
+    }
+    
+    table {
+        font-size: 0.85em;
+    }
+    
+    th, td {
+        padding: 14px 12px;
+    }
+    
+    .action-links {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .action-links a {
+        padding: 8px 14px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2em;
+    }
+    
+    .add-link {
+        padding: 14px 28px;
+        font-size: 1em;
+    }
+    
+    table {
+        font-size: 0.75em;
+    }
+    
+    th, td {
+        padding: 12px 10px;
+    }
+    
+    .container, .form-container {
+        padding: 20px;
+    }
+}
+
+/* Loading animation for page */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(240, 230, 140, 0.2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4b0082, #6a0dad);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #6a0dad, #8a2be2);
+}
