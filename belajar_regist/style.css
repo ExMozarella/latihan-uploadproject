@@ -1,6 +1,168 @@
+/* Modern reset and variables */
+:root{
+  --page-bg: #f6f8fb;
+  --card-bg: #ffffff;
+  --accent: #4f46e5; /* indigo-600 */
+  --text: #111827;
+  --muted: #6b7280;
+  --radius: 10px;
+  --gap: 1rem;
+}
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body{
+  height: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--page-bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+/* Main container (keeps original class name) */
 .conlog{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap);
+  margin: 50px auto;
+  width: min(720px, calc(100% - 2rem));
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.98));
+  border-radius: var(--radius);
+  border: 1px solid rgba(15,23,42,0.04);
+  box-shadow: 0 8px 30px rgba(16,24,40,0.06);
+}
+
+/* Headings & text inside container */
+.conlog h1,
+.conlog h2{
+  margin: 0;
+  text-align: center;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.conlog p{
+  color: var(--muted);
+  text-align: center;
+  margin: 0;
+}
+
+/* Forms & inputs (if you have forms inside .conlog) */
+.conlog form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Generic input styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select{
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(15,23,42,0.08);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 1rem;
+  transition: box-shadow .12s ease, border-color .12s ease, transform .06s ease;
+}
+
+/* Accessible focus state */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus{
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(79,70,229,0.12);
+}
+
+/* Buttons */
+.btn,
+button{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .08s ease, box-shadow .12s ease, opacity .08s ease;
+}
+
+.btn:hover,
+button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(79,70,229,0.14);
+}
+
+.btn:active,
+button:active{
+  transform: translateY(0);
+}
+
+/* Secondary (muted) button */
+.btn-secondary{
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(15,23,42,0.06);
+}
+
+/* Small helper text */
+.helper{
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px){
+  .conlog{
+    margin: 24px 12px;
+    padding: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  html, body{
+    font-size: 15px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select{
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+/* Small utility helpers (optional) */
+.center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hidden{
+  display:none !important;
 }
