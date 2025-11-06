@@ -1,43 +1,43 @@
+
+<?php
+
+
+session_start();//
+include 'koneksi.php';//
+
+
+if(isset($_POST['login'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+
+    $query = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($koneksi, $query);
+    $user = mysqli_fetch_assoc($result);
+
+
+    if($user && password_verify($password, $user['password'])){
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['nama_lengkap'] = $user['nama_lengkap'];
+        header("Location: home.php");
+    } else {
+        echo "<script>alert('Username atau password salah!');</script>";
+    }
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<!-- berikan pengelompokan -->
-<div class ="conlog">
     <h2>Login</h2>
-    <!-- form table -->
     <form method="POST">
-        <table>
-            <!-- area input username -->
-            <tr>
-                <td>
-                    <label for="username">Masukkan Username : </label>
-                </td>
-                <td>
-                    <input type="text" name="username" placeholder="Username" required><br>
-                </td>
-            </tr>
-
-            <!-- area input password -->
-            <tr>
-                <td>
-                    <label for="password">Masukkan Password : </label>
-                </td>
-                <td>
-                    <input type="password" name="password" placeholder="Password" required><br>
-                </td>
-            </tr>
-
-        </table>
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit" name="login">Login</button>
     </form>
-    <button type="submit" name="login">Login</button>
-    <!-- link ke halaman register -->
-    <p>Create Account |<a href="register.php"> Daftar di sini</a></p>
+    <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
 </body>
 </html>
